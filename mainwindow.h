@@ -3,8 +3,9 @@
 #include <QTimer>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <helpwindow.h>
 
-#define STEP_TIME       160
+#define STEP_TIME       150
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -52,4 +53,6 @@ private:
     bool            cypherMode      = false; //false - szyfrowanie, true - deszyfrowanie
     unsigned        *posArray       = nullptr;
     QTimer          executeTimer;
+
+    HelpWindow      help;
 };

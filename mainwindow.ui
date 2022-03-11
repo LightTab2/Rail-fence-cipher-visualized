@@ -24,6 +24,7 @@
   </property>
   <property name="font">
    <font>
+    <family>Book Antiqua</family>
     <pointsize>10</pointsize>
    </font>
   </property>
@@ -122,7 +123,7 @@
            <string>Tutaj wprowadza się wejście dla algorytmu</string>
           </property>
           <property name="plainText">
-           <string>01234567891234567890</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -344,7 +345,7 @@
              <number>20</number>
             </property>
             <property name="value">
-             <number>3</number>
+             <number>2</number>
             </property>
            </widget>
           </item>
@@ -413,6 +414,7 @@
           </property>
           <property name="font">
            <font>
+            <family>Book Antiqua</family>
             <pointsize>10</pointsize>
            </font>
           </property>
@@ -1053,6 +1055,7 @@
       </property>
       <property name="font">
        <font>
+        <family>Book Antiqua</family>
         <pointsize>14</pointsize>
        </font>
       </property>
@@ -1183,7 +1186,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1194,14 +1197,14 @@
     <addaction name="actionSave"/>
     <addaction name="actionSaveAs"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="menuPomoc">
     <property name="title">
      <string>Pomoc</string>
     </property>
     <addaction name="actionInfo"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuHelp"/>
+   <addaction name="menuPomoc"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionLoad">

@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     cypher.cpp \
+    helpwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    helpwindow.h \
     mainwindow.h
 
 FORMS += \
+    helpwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

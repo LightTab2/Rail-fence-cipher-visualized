@@ -83,7 +83,7 @@ void MainWindow::decypherStep()
                 maxHeight   = std::max(height1, height2);
 
     unsigned    textSize    = ui->firstText->toPlainText().size();
-    unsigned    fenceSize  = (height1 * 2 - 2) + (height2 * 2 - 2);
+    unsigned    fenceSize   = (height1 * 2 - 2) + (height2 * 2 - 2);
 
     bool        inverted    = ui->inverseCheck->isChecked();
 
@@ -169,10 +169,11 @@ void MainWindow::decypherStep()
 
         }
 
+        unsigned deletePos = (inverted ? (text.size() - letterCount) : 0);
         for (unsigned i = 0u; i != letterCount; ++i)
         {
-            ui->visTable->setItem((inverted ? (maxHeight - iteration - 1) : iteration), i, new QTableWidgetItem(text.at(0)));
-            text.remove(0, 1);
+            ui->visTable->setItem((inverted ? (maxHeight - iteration - 1) : iteration), i, new QTableWidgetItem(text.at(deletePos)));
+            text.remove(deletePos, 1);
         }
     }
     else if (iteration < (textSize + maxHeight))

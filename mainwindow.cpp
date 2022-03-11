@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), help(this)
 {
     ui->setupUi(this);
 
@@ -30,9 +30,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->actionSaveAs,   &QAction::triggered,        this, &MainWindow::saveAsFile);
 
     //Wyświetlanie pomocy
-    connect(ui->actionInfo,     &QAction::triggered,        this, [this](){QMessageBox::information(this, tr("Informacja o algorytmie"),
-                                                                                         tr("Szyfr Cezara ROT3. Dozwolony alfabet to [A-Z]. Znaki specjalne [ \t\n] są przepisywane. Reszta przepisywana jako \"?\"."));});}
-
+    connect(ui->actionInfo,     &QAction::triggered,        this, [this]() { help.show(); });
+}
 //Odpowiada za zmiany napisów na formatkach
 void MainWindow::setupGuiLabels(int state)
 {
@@ -66,9 +65,14 @@ void MainWindow::saveFile()
         return;
     }
 
-    QString str = ui->secondText->toPlainText();
+    unsigned    height1     = ui->firstBoardHeight->value(),
+                height2     = ui->secondBoardHeight->value();
+    bool        inverted    = ui->inverseCheck->isChecked(),
+                cypherMode  = ui->modeCheck->isChecked();
+
+    QString     str         = ui->secondText->toPlainText();
     QDataStream out(&file);
-    out << str;
+    out << cypherMode << inverted << height1 << height2 << str;
 }
 
 void MainWindow::saveAsFile()
@@ -79,25 +83,13 @@ void MainWindow::saveAsFile()
     if (fileName.isEmpty())
         return;
 
-    QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly))
-    {
-        QMessageBox::information(this, tr("Nie udało się otworzyć pliku"),
-            file.errorString());
-
-        return;
-    }
-
-    QString str = ui->secondText->toPlainText();
-    QDataStream out(&file);
-    out << str;
-
     savedFileName = fileName;
+    saveFile();
 }
 
 void MainWindow::loadFile()
 {
-    QString fileName = QFileDialog::getSaveFileName(this,
+    QString fileName = QFileDialog::getOpenFileName(this,
                                                  tr("Wczytaj szyfr"), "",
                                                  tr("Pliki tekstowe (*.txt);;Wszystkie pliki (*)"));
     if (fileName.isEmpty())
@@ -112,10 +104,20 @@ void MainWindow::loadFile()
         return;
     }
 
-    QString str;
-    QDataStream in(&file);
-    in >> str;
+    unsigned    height1,
+                height2;
 
+    bool        inverted,
+                cypherMode;
+
+    QString     str;
+    QDataStream in(&file);
+    in >> cypherMode >> inverted >> height1 >> height2 >> str;
+
+    ui->firstBoardHeight->setValue(height1);
+    ui->secondBoardHeight->setValue(height2);
+    ui->modeCheck->setChecked(cypherMode);
+    ui->inverseCheck->setChecked(inverted);
     ui->firstText->setPlainText(str);
 
     savedFileName = fileName;
