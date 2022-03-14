@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->actionSaveAs,   &QAction::triggered,        this, &MainWindow::saveAsFile);
 
     //Wyświetlanie pomocy
-    connect(ui->actionInfo,     &QAction::triggered,        this, [this]() { help.show(); });
+    connect(ui->actionInfo,     &QAction::triggered,        this, [this]() { help.showMaximized(); help.activateWindow(); });
 }
 
 //Odpowiada za zmiany napisów na formatkach
