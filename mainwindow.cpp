@@ -6,11 +6,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
 
     //Łączy naciśnięcie przycisku z funkcją szyfrującą lub deszyfrującą tekst (cypher.cpp)
-    //https://doc.qt.io/qt-5/signalsandslots.html
     connect(ui->executeButton,  &QPushButton::clicked,      this, &MainWindow::execute);
 
     //Co ile milisekund będzie wykonywała się wizualizacja
-    //https://doc.qt.io/qt-5/qtimer.html
     executeTimer.setInterval(STEP_TIME);
 
     //Timer będzie powtarzać funkcję [executing]
@@ -32,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //Wyświetlanie pomocy
     connect(ui->actionInfo,     &QAction::triggered,        this, [this]() { help.show(); });
 }
+
 //Odpowiada za zmiany napisów na formatkach
 void MainWindow::setupGuiLabels(int state)
 {

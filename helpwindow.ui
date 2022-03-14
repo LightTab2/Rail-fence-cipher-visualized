@@ -6,16 +6,143 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>600</width>
     <height>300</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Book Antiqua</family>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Algorytm</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTextBrowser" name="textBrowser"/>
+    <widget class="QTextBrowser" name="algorithmText">
+     <property name="font">
+      <font>
+       <family>Book Antiqua</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Book Antiqua','Book Antiqua'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Zaprojektowany algorytm przypomina rzeczywistą pracę &lt;span style=&quot; font-weight:600;&quot;&gt;osoby szyfrującej&lt;/span&gt;, a nie optymalną drogę, która pozwalałaby wyznaczyć szybko szyfr/tekst i dopiero na tym opracować &lt;span style=&quot; font-weight:600;&quot;&gt;wizualizację&lt;/span&gt;. Oznacza to, że tekst, który wyświetla się podczas wizualizacji, jest &lt;span style=&quot; font-weight:600;&quot;&gt;kluczową częścią poprawnego działania programu&lt;/span&gt;, a dane zapisywane w tabeli są później wykorzystywane do dalszej pracy algorytmu.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Szyfrowanie/deszyfrowanie odbywa się &lt;span style=&quot; font-weight:600;&quot;&gt;krokami&lt;/span&gt;, wywoływanymi w określonych &lt;span style=&quot; font-weight:600;&quot;&gt;interwałach&lt;/span&gt;. Te funkcje pobierają następujące dane:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;height1&lt;/span&gt; – wysokość 1. płotu&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;height2&lt;/span&gt; – wysokość 2. płotu&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;maxHeight&lt;/span&gt; – maksimum z &lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;height1&lt;/span&gt; i &lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;height2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;textSize&lt;/span&gt; – rozmiar wpisanego tekstu do zaszyfrowania/deszyfrowania&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;inverted&lt;/span&gt; – zmienna true/false odpowiadająca na pytanie ,,czy rysujemy płot do góry nogami''&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;W programie wykorzystuje się jeszcze kilka &lt;span style=&quot; font-weight:600;&quot;&gt;zmiennych pomocniczych&lt;/span&gt;:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;fenceSize1 = (height1 * 2 - 2)&lt;/span&gt; – liczba elementów w pierwszym płocie&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;fenceSize2 = (height2 * 2 - 2)&lt;/span&gt; – liczba elementów w drugim płotku&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;fenceSize = fenceSize1 + fenceSize2&lt;/span&gt; – rozmiar płotu będącego złączeniem płotku pierwszego i drugiego&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;index = iteration % fenceSize&lt;/span&gt; – obecny element płotu (złączonego)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:12px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;cycles = textSize / fenceSize&lt;/span&gt; – liczba zapętleń płotu (ile cyklów wzoru płotu już narysowaliśmy)&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;W programie istnieje &lt;span style=&quot; font-weight:600;&quot;&gt;ograniczenie&lt;/span&gt; na &lt;span style=&quot; font-weight:600;&quot;&gt;wysokość&lt;/span&gt; płotka, które musi być w zakresie od 2 do 20. Ograniczenie do 20 jest tylko dla &lt;span style=&quot; font-weight:600;&quot;&gt;wygody&lt;/span&gt; i można je &lt;span style=&quot; font-weight:600;&quot;&gt;usunąć&lt;/span&gt; w edytorze interfejsu, co nie wpłynie na działanie programu, jednak pozwolenie na wysokość płotu równą 0 lub 1, spowoduje &lt;span style=&quot; font-weight:600;&quot;&gt;błędne&lt;/span&gt; działanie programu. Uzasadnienie:&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Na początku próbowałem pozwolić na wysokości 0 i 1 (taka wysokość posiada dwuznaczną interpretację, więc wybrałem jedną z nich), ale szybko kod stał się bardzo nieczytelny i wtedy zacząłem myśleć:&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-style:italic;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;nie ma sensu ustawiać wysokości na 0, ponieważ jeżeli chcemy, aby drugiego płotka nie było, to jest to równoważne z ustawieniem jego wysokości na wysokość płotka pierwszego&lt;/li&gt;
+&lt;li style=&quot; font-style:italic;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;wysokość 1 sprowadza się do przekopiowania tekstu, co nie jest żadnym szyfrem, a gdy tylko jeden z płotków posiada wysokość 1, to nie wiadomo czy: &lt;/li&gt;&lt;/ul&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 2;&quot;&gt;&lt;li style=&quot; font-style:italic;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;mamy powtarzać wierzchołki    &lt;/li&gt;
+&lt;li style=&quot; font-style:italic;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;powtarzać tylko jeden z wierzchołków&lt;/li&gt;
+&lt;li style=&quot; font-style:italic;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;nic nie robić&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="algorithmLayout">
+     <item>
+      <layout class="QVBoxLayout" name="szyfrLayout">
+       <item>
+        <widget class="QLabel" name="szyfrLabel">
+         <property name="font">
+          <font>
+           <family>Book Antiqua</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Szyfrowanie</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="szyfrText">
+         <property name="font">
+          <font>
+           <family>Book Antiqua</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Book Antiqua','Book Antiqua'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Szyfrowanie jest podzielone na &lt;span style=&quot; font-weight:600;&quot;&gt;trzy fazy&lt;/span&gt;. Pierwsza z nich wypełnia &lt;span style=&quot; font-weight:600;&quot;&gt;płotek&lt;/span&gt; literami. Oznaczona kolorem &lt;span style=&quot; font-weight:600;&quot;&gt;białym&lt;/span&gt;. Następna (opcjonalna, dla wygody) wycina litery z &lt;span style=&quot; font-weight:600;&quot;&gt;wierszy&lt;/span&gt; i układa je obok siebie. Jest to faza &lt;span style=&quot; font-weight:600;&quot;&gt;pomarańczowa&lt;/span&gt;. Ostatnia, &lt;span style=&quot; font-weight:600;&quot;&gt;zielona&lt;/span&gt; faza łączy wiersze w &lt;span style=&quot; font-weight:600;&quot;&gt;szyfrogram&lt;/span&gt;.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;W pierwszej fazie przechodzimy &lt;span style=&quot; font-weight:600;&quot;&gt;liniowo&lt;/span&gt; po całym tekście i wrzucamy litery w &lt;span style=&quot; font-weight:600;&quot;&gt;obliczone pozycje&lt;/span&gt;.  Pozycje są wyznaczane &lt;span style=&quot; font-weight:600;&quot;&gt;lokalnie&lt;/span&gt; tzn.: w przypadku zmiany &lt;span style=&quot; font-weight:600;&quot;&gt;kierunku&lt;/span&gt; liczmy index ,,od zera''. Np. po osiągnięciu drugiego (bo od pierwszego zaczynamy pracę) wierzchołka płotku zmienia się kierunek, więc odejmujemy &lt;span style=&quot; font-weight:600;&quot;&gt;indeks wierzchołka&lt;/span&gt;: &lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;index -= height1&lt;/span&gt; i dopiero wyznaczamy pozycję &lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;pos = (height1 - index) - 2&lt;/span&gt;. Płotek zmienia kierunek 3 razy, zanim zrobić pełny &lt;span style=&quot; font-weight:600;&quot;&gt;cykl&lt;/span&gt;, przy czym należy wyznaczyć też indeks zanim zmieni kierunek. Oznacza to, że w jednym cyklu trzeba rozważyć 4 przypadki dla poprawnego wyznaczenia pozycji. Opis wraz z przykładami, jak dokładnie to się dzieje, jest umieszczony w &lt;span style=&quot; font-weight:600;&quot;&gt;komentarzach&lt;/span&gt; w &lt;span style=&quot; font-weight:600;&quot;&gt;kodzie&lt;/span&gt;. Przypadek &lt;span style=&quot; font-weight:600;&quot;&gt;odwróconego&lt;/span&gt; płotku to po prostu przekształcenie indeksu na samym końcu: &lt;span style=&quot; font-family:'Courier New'; color:#00aaaa;&quot;&gt;pos = maxHeight - 1 - pos&lt;/span&gt;. &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Implementacja 2. i 3. fazy jest banalna. Przechodzimy liniowo po wszystkich elementach tablicy z wizualizacji w danym wierszu, jak jest znak, to go przepisujemy.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="deszyfrLayout">
+       <item>
+        <widget class="QLabel" name="deszyfrLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Book Antiqua</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Deszyfrowanie</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="deszyfrText">
+         <property name="font">
+          <font>
+           <family>Book Antiqua</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Book Antiqua','Book Antiqua'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Deszyfrowanie jest podzielone na &lt;span style=&quot; font-weight:600;&quot;&gt;dwie fazy&lt;/span&gt;. Dzieje się to &lt;span style=&quot; font-weight:600;&quot;&gt;analogicznie&lt;/span&gt; do szyfrowania, tylko w &lt;span style=&quot; font-weight:600;&quot;&gt;odwrotnej kolejności&lt;/span&gt; oraz nie ma fazy nr 3. Pierwsza z nich wypełnia &lt;span style=&quot; font-weight:600;&quot;&gt;wiersze&lt;/span&gt; (odpowiednik 2. fazy w szyfrowaniu) literami. Następna odtwarza płotek literę po literze i od razu przepisuje jaką jako zdeszfyrowany tekst.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Druga faza posiada &lt;span style=&quot; font-weight:600;&quot;&gt;obliczanie pozycji&lt;/span&gt; dokładnie takie samo, jak szyfrowanie, ale obliczenie&lt;span style=&quot; font-weight:600;&quot;&gt; liczby liter&lt;/span&gt; potrzebnych do wycięcia z tekstu w fazie pierwszej jest skomplikowane. &lt;span style=&quot; font-weight:600;&quot;&gt;Litery&lt;/span&gt; w danym &lt;span style=&quot; font-weight:600;&quot;&gt;wierszu&lt;/span&gt; mogą się &lt;span style=&quot; font-weight:600;&quot;&gt;powtarzać&lt;/span&gt; 4, 3, 2 lub 1 raz na jeden &lt;span style=&quot; font-weight:600;&quot;&gt;cykl&lt;/span&gt; płotu. Rozróżnia się 5 przypadków:&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;       o    -- 1.  2 w/c&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;&lt;br /&gt; x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;     &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;x &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;o o &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;--&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;2.  4 w/c&lt;br /&gt;  x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;   &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;   o  &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;--&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;3 w/c&lt;br /&gt;   x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;       &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;--&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;2 w/c	&lt;br /&gt;    x&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;        &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;--&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; color:#bec0c2;&quot;&gt;  &lt;/span&gt;&lt;span style=&quot; font-family:'Courier New'; font-style:italic; color:#bec0c2;&quot;&gt;1 w/c&lt;br /&gt;w/c oznacza wierzchołki/cykl&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Przy &lt;span style=&quot; font-weight:600;&quot;&gt;odwróconym&lt;/span&gt; płotku można skorzystać z powyższego algorytmu, tylko przy ,,odrywaniu'' liter z szyfrogramu w pierwszej fazie, należy to robić &lt;span style=&quot; font-weight:600;&quot;&gt;od końca&lt;/span&gt; tekstu oraz wypisywać wiersze w &lt;span style=&quot; font-weight:600;&quot;&gt;odwrotnej kolejności&lt;/span&gt; (wizualizacja pokazuje jak to się dzieje).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
